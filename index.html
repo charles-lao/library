@@ -6,15 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
     <script defer src="script.js"></script>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="./styles/style.css"> 
   </head>
   <body>
-    <table id="library">
-      <tr>
-        <th>Author</th>
-        <th>Title</th>
-        <th>No. of Pages</th>
-      </tr>
-    </table>
+    <div class="container">
+      <header>
+        <h1>library</h1>
+      </header>
+      
+      <div class="content">
+        <div class="add-book-section">
+          <button type="button" id="add-btn"><img src="../images/file-document-plus-outline.svg" /> ADD BOOK</button>
+        </div>
+
+        <div>
+          <table id="library">
+            <tr>
+              <th>Author</th>
+              <th>Title</th>
+              <th>No. of Pages</th>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+
+      <footer>
+
+      </footer>
+    </div>
   </body>
 </html>

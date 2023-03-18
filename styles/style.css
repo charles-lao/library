@@ -1,0 +1,59 @@
+@import url('reset.css');
+
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+*, h1, p, td, th {
+    font-family: Roboto;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+.container {
+    display: grid;
+    gap: 5px;
+    grid-template-rows: 50px minmax(600px, 1fr) 50px;
+}
+
+header {
+    border: 1px solid black;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.content{
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 50px 1fr 1fr;
+    gap: 10px;
+}
+
+.content div:first-child {
+    justify-self: center;
+    align-self: center;
+}
+
+button img {
+    height: 25px;
+    width: 25px;
+}
+.content button {
+    padding: 5px 20px 5px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+td, th {
+    border: 2px solid black;
+    text-align: center;
+    padding: 5px;
+}
+
+footer {
+    border: 1px solid black;
+}

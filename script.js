@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 const myLibrary = [];
 const libraryTable = document.querySelector('#library');
 
