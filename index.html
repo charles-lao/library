@@ -7,16 +7,39 @@
     <title>Library</title>
     <script defer src="script.js"></script>
     <link rel="stylesheet" href="./styles/style.css"> 
+    <link rel="icon" href="../images/file-document-plus-outline.svg" type="image/x-icon" >
   </head>
   <body>
     <div class="container">
       <header>
-        <h1>library</h1>
+        <img src="../images/library-outline.svg" /><h1>library</h1>
       </header>
       
       <div class="content">
         <div class="add-book-section">
           <button type="button" id="add-btn"><img src="../images/file-document-plus-outline.svg" /> ADD BOOK</button>
+        </div>
+
+        <div class="book-form">
+          <form>
+            <label for="title">TITLE</label>
+              <input type="text" id="title" name="title" />
+            
+
+            <label for="author">AUTHOR</label>
+              <input type="text" id="author" name="author" />
+          
+
+            <label for="pages">NO. OF PAGES</label>
+            <input type="number" id="pages" name="pages" min="1" />
+
+            <div class="form-btns">
+              <button type="button" id="submit-btn">SUBMIT</button>
+              <button type="button" id="cancel-btn">CANCEL</button>
+            </div>
+            
+            
+          </form>
         </div>
 
         <div>
@@ -32,7 +55,7 @@
       </div>
 
       <footer>
-
+        <div><img src="../images/github.svg" /><p>charles-lao 2023</p></div>
       </footer>
     </div>
   </body>
