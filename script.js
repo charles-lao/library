@@ -1,10 +1,16 @@
 /* eslint-disable no-console */
 /* eslint-disable no-plusplus */
 const myLibrary = [];
-const libraryTable = document.querySelector('#library');
+const libraryTable = document.querySelector('.library-tbody');
 const addBookBtn = document.querySelector('#add-btn');
+
 const bookForm = document.querySelector('.book-form');
 const cancelBtn = document.querySelector('#cancel-btn');
+const submitBtn = document.querySelector('#submit-btn');
+
+const authorInput = document.querySelector('#author');
+const titleInput = document.querySelector('#title');
+const pagesInput = document.querySelector('#pages');
 
 function Book(author, title, noOfPages) {
     // the constructor...
@@ -28,6 +34,10 @@ addBookToLibrary(book1);
 addBookToLibrary(book2);
 
 function addBookRows() {
+
+    // reset tbody
+    libraryTable.textContent = '';
+
     for (let i = 0; i < myLibrary.length; i++) {
         
         const row = document.createElement('tr');
@@ -46,7 +56,7 @@ function addBookRows() {
     }
 }
 
-addBookRows(myLibrary);
+addBookRows();
 
 addBookBtn.addEventListener('click',  () => {
 
@@ -65,4 +75,10 @@ addBookBtn.addEventListener('click',  () => {
 
 cancelBtn.addEventListener('click', () => {
     bookForm.style.display = 'none';
+});
+
+submitBtn.addEventListener('click', () => {
+    const newBook = new Book(authorInput.value, titleInput.value, pagesInput.value);
+    addBookToLibrary(newBook);
+    addBookRows();
 });
