@@ -14,8 +14,6 @@ const authorInput = document.querySelector('#author');
 const titleInput = document.querySelector('#title');
 const pagesInput = document.querySelector('#pages');
 
-const removeBtns = document.querySelectorAll('.remove-btns');
-
 function Book(author, title, noOfPages, isRead) {
     // the constructor...
     this.author = author;
@@ -52,25 +50,45 @@ function addBookRows() {
             const cell = document.createElement('td');
 
             if(j == 4) {
-                const cellBtn = document.createElement('input');
-                cellBtn.setAttribute('type', 'button');
-                cellBtn.setAttribute('value', 'REMOVE');
-                cellBtn.setAttribute('data-index-number', i);
-                cellBtn.setAttribute('class', 'remove-btns');
+                const removeBtn = document.createElement('input');
+                removeBtn.setAttribute('type', 'button');
+                removeBtn.setAttribute('value', 'REMOVE');
+                removeBtn.setAttribute('data-index-number', i);
+                removeBtn.setAttribute('class', 'remove-btns');
+
+                const readBtn = document.createElement('input');
+                readBtn.setAttribute('type', 'button');
+                readBtn.setAttribute('value', 'READ / UNREAD');
+                readBtn.setAttribute('data-index-number', i);
+                readBtn.setAttribute('class', 'remove-btns');
                 
-                cellBtn.addEventListener('click', function (e) {
+                removeBtn.addEventListener('click', function (e) {
                     myLibrary.splice(this.dataset.indexNumber, 1);
                     addBookRows();
                 });
 
-                cell.appendChild(cellBtn);
+                readBtn.addEventListener('click', function (e) {
+                    
+
+                    switch(myLibrary[i].isRead) {
+                        case 'Yes':
+                            myLibrary[i].isRead = 'No';
+                            break;
+                        case 'No':
+                            myLibrary[i].isRead = 'Yes';
+                            break
+                        default:
+                            break;
+                    }
+                    addBookRows();
+                });
+
+                cell.appendChild(removeBtn);
+                cell.appendChild(readBtn);
             } else {
                 const cellText = document.createTextNode(Object.values(myLibrary[i])[j]);
                 cell.appendChild(cellText);
             }
-
-            
-
             
             row.appendChild(cell);
         }
