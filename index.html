@@ -34,6 +34,20 @@
             <label for="pages">NO. OF PAGES</label>
             <input type="number" id="pages" name="pages" min="1" />
 
+            <p>FINISHED READING?</p>
+
+            <div class="radio-container">
+              <div>
+                <input type="radio" id="yes" name="is-read" value="Yes">
+                <label for="yes">YES</label>
+              </div>
+
+              <div>
+                <input type="radio" id="no" name="is-read" value="No" checked>
+                <label for="no">NO</label>
+              </div>
+            </div>
+
             <div class="form-btns">
               <button type="button" id="submit-btn">SUBMIT</button>
               <button type="button" id="cancel-btn">CANCEL</button>
@@ -50,6 +64,8 @@
                 <th>Author</th>
                 <th>Title</th>
                 <th>No. of Pages</th>
+                <th>Finished Reading</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody class="library-tbody">

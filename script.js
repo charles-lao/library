@@ -1,3 +1,5 @@
+/* eslint-disable func-names */
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-console */
 /* eslint-disable no-plusplus */
 const myLibrary = [];
@@ -12,11 +14,14 @@ const authorInput = document.querySelector('#author');
 const titleInput = document.querySelector('#title');
 const pagesInput = document.querySelector('#pages');
 
-function Book(author, title, noOfPages) {
+const removeBtns = document.querySelectorAll('.remove-btns');
+
+function Book(author, title, noOfPages, isRead) {
     // the constructor...
     this.author = author;
     this.title = title;
     this.noOfPages = noOfPages;
+    this.isRead = isRead;
 }
 
 function addBookToLibrary(newBook) {
@@ -27,8 +32,8 @@ function addBookToLibrary(newBook) {
 
 
 // sample books
-const book1 = new Book('J.K. Rowling', 'Harry Potter and the Deathly Hallows', 607);
-const book2 = new Book('J.K. Rowlong', 'Harry Potter and the Philosopher\'s Stone', 223);
+const book1 = new Book('J.K. Rowling', 'Harry Potter and the Deathly Hallows', 607, 'No');
+const book2 = new Book('J.K. Rowlong', 'Harry Potter and the Philosopher\'s Stone', 223, 'No');
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
@@ -42,12 +47,31 @@ function addBookRows() {
         
         const row = document.createElement('tr');
 
-        for (let j = 0; j < 3; j++) {
+        for (let j = 0; j < 5; j++) {
 
             const cell = document.createElement('td');
-            const cellText = document.createTextNode(Object.values(myLibrary[i])[j]);
 
-            cell.appendChild(cellText);
+            if(j == 4) {
+                const cellBtn = document.createElement('input');
+                cellBtn.setAttribute('type', 'button');
+                cellBtn.setAttribute('value', 'REMOVE');
+                cellBtn.setAttribute('data-index-number', i);
+                cellBtn.setAttribute('class', 'remove-btns');
+                
+                cellBtn.addEventListener('click', function (e) {
+                    myLibrary.splice(this.dataset.indexNumber, 1);
+                    addBookRows();
+                });
+
+                cell.appendChild(cellBtn);
+            } else {
+                const cellText = document.createTextNode(Object.values(myLibrary[i])[j]);
+                cell.appendChild(cellText);
+            }
+
+            
+
+            
             row.appendChild(cell);
         }
 
@@ -78,7 +102,17 @@ cancelBtn.addEventListener('click', () => {
 });
 
 submitBtn.addEventListener('click', () => {
-    const newBook = new Book(authorInput.value, titleInput.value, pagesInput.value);
+
+    let isRead;
+
+    if(document.getElementById('yes').checked){
+        isRead = 'Yes';
+    } else if (document.getElementById('no').checked) {
+        isRead = 'No';
+    }
+
+    const newBook = new Book(authorInput.value, titleInput.value, pagesInput.value, isRead);
     addBookToLibrary(newBook);
     addBookRows();
 });
+
