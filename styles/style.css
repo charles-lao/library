@@ -56,6 +56,7 @@ header img {
     justify-content: center;
     gap: 3px;
     margin-top: 10px;
+    border-radius: 10px;
 }
 
 button img {
@@ -66,7 +67,7 @@ button img {
 .book-form {
     border: 1px solid #b7bbbe;
     border-radius: 8px;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

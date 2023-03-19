@@ -1,6 +1,10 @@
+/* eslint-disable no-console */
 /* eslint-disable no-plusplus */
 const myLibrary = [];
 const libraryTable = document.querySelector('#library');
+const addBookBtn = document.querySelector('#add-btn');
+const bookForm = document.querySelector('.book-form');
+const cancelBtn = document.querySelector('#cancel-btn');
 
 function Book(author, title, noOfPages) {
     // the constructor...
@@ -15,6 +19,8 @@ function addBookToLibrary(newBook) {
     
 }
 
+
+// sample books
 const book1 = new Book('J.K. Rowling', 'Harry Potter and the Deathly Hallows', 607);
 const book2 = new Book('J.K. Rowlong', 'Harry Potter and the Philosopher\'s Stone', 223);
 
@@ -42,3 +48,21 @@ function addBookRows() {
 
 addBookRows(myLibrary);
 
+addBookBtn.addEventListener('click',  () => {
+
+    switch(bookForm.style.display){
+        case 'none':
+            bookForm.style.display = 'flex';
+            break;
+        case 'flex':
+            bookForm.style.display = 'none';
+            break;
+        default:
+            bookForm.style.display = 'flex';
+            break;
+    }
+});
+
+cancelBtn.addEventListener('click', () => {
+    bookForm.style.display = 'none';
+});
