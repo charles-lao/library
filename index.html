@@ -21,18 +21,18 @@
         </div>
 
         <div class="book-form">
-          <form>
+          <form onsubmit="handleSubmit(event)">
             
             <label for="title">TITLE</label>
-            <input type="text" id="title" name="title" />
+            <input type="text" id="title" name="title" required />
             
 
             <label for="author">AUTHOR</label>
-            <input type="text" id="author" name="author" />
+            <input type="text" id="author" name="author" required />
           
 
             <label for="pages">NO. OF PAGES</label>
-            <input type="number" id="pages" name="pages" min="1" />
+            <input type="number" id="pages" name="pages" min="1" required />
 
             <p>FINISHED READING?</p>
 
@@ -49,8 +49,8 @@
             </div>
 
             <div class="form-btns">
-              <button type="button" id="submit-btn">SUBMIT</button>
-              <button type="button" id="cancel-btn">CANCEL</button>
+              <input type="submit" id="submit-btn" value="SUBMIT" />
+              <input type="button" id="cancel-btn" value="CANCEL" />
             </div>
             
             

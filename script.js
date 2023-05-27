@@ -137,17 +137,24 @@ const libraryDisplay = (() => {
     const submitBtn = document.querySelector('#submit-btn');
     submitBtn.addEventListener('click', () => {
 
-        let isRead;
-    
-        if(document.getElementById('yes').checked){
-            isRead = 'Yes';
-        } else if (document.getElementById('no').checked) {
-            isRead = 'No';
+        
+        // check if all fields are filled up
+        if(authorInput.value != "" && titleInput.value != "" && pagesInput.value != "") {
+
+        
+            let isRead;
+        
+            if(document.getElementById('yes').checked){
+                isRead = 'Yes';
+            } else if (document.getElementById('no').checked) {
+                isRead = 'No';
+            }
+        
+            const newBook = new Book(authorInput.value, titleInput.value, pagesInput.value, isRead);
+            library.addBookToLibrary(newBook);
+            addBookRows();
+
         }
-    
-        const newBook = new Book(authorInput.value, titleInput.value, pagesInput.value, isRead);
-        library.addBookToLibrary(newBook);
-        addBookRows();
     });
 
     return {
@@ -156,6 +163,11 @@ const libraryDisplay = (() => {
 
 })();
 
+
+// prevent the submit button from refreshing the page
+const handleSubmit = (event) => {
+    event.preventDefault();
+}
 
 libraryDisplay.addBookRows();
 
